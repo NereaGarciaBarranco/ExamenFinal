@@ -1,30 +1,23 @@
 package examenFinal;
 
-public class Ciudad {
+public class Ciudad implements Comparable <Ciudad>{
 	// Atributos de la clase
 	private String nombre;
 	private int contadorDivorciosTotales;
 	
-	
-
-	/**
-	 * @param nombre
-	 */
+	// Metodos constructores
 	public Ciudad(String nombre) {
 		super();
 		this.nombre = nombre;
 	}
 
-	/**
-	 * @param nombre
-	 * @param contadorDivorciosTotales
-	 */
 	public Ciudad(String nombre, int contadorDivorciosTotales) {
 		super();
 		this.nombre = nombre;
 		this.contadorDivorciosTotales = contadorDivorciosTotales;
 	}
 
+	// Metodos get y set
 	public String getNombre() {
 		return nombre;
 	}
@@ -41,10 +34,20 @@ public class Ciudad {
 		this.contadorDivorciosTotales = contadorDivorciosTotales;
 	}
 	
-	
 	@Override
 	public String toString() {
-		return "Ciudad [nombre=" + nombre + ", contadorDivorciosTotales=" + contadorDivorciosTotales + "]";
+		return "Ciudad [nombre = " + nombre + ", contadorDivorciosTotales = " + contadorDivorciosTotales + "]";
 	}
-
+	
+	@Override
+	public int compareTo(Ciudad c) {
+		if (this.contadorDivorciosTotales > c.contadorDivorciosTotales) {
+			return -1;
+		} else if (this.contadorDivorciosTotales < c.contadorDivorciosTotales) {
+			return 1;
+		} else {
+			// Si son iguales
+			return 0;
+		}	
+	}
 }
