@@ -1,5 +1,13 @@
 package examenFinal;
 
+/**
+ * Esta clase crea objetos de tipo Ciudad que se utilizan
+ * para almacenar las distintas ciudades que aparecen 
+ * en un fichero. Ademas, junto al nombre de la ciudad
+ * se almacena un contador de divorcios.
+ *
+ */
+
 public class Ciudad implements Comparable <Ciudad>{
 	// Atributos de la clase
 	private String nombre;
@@ -23,7 +31,7 @@ public class Ciudad implements Comparable <Ciudad>{
 	}
 	
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombre = nombre; 
 	}
 	
 	public int getContadorDivorciosTotales() {
@@ -36,7 +44,8 @@ public class Ciudad implements Comparable <Ciudad>{
 	
 	@Override
 	public String toString() {
-		return "Ciudad [nombre = " + nombre + ", contadorDivorciosTotales = " + contadorDivorciosTotales + "]";
+		return "Ciudad [nombre = " + nombre + ", contadorDivorciosTotales = " 
+				+ contadorDivorciosTotales + "]";
 	}
 	
 	@Override

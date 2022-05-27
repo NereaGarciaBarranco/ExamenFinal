@@ -1,5 +1,13 @@
 package examenFinal;
 
+/**
+* Esta clase ejecuta un programa que crea una Lista Simple
+* Enlazada que almacena objetos de tipo Node que contienen
+* numeros enteros que se apuntan entre si. Ademas, demuestra
+* por consola el funcionamiento del metodo eliminarMayor().
+* 
+* @Author Nerea Garcia Barranco
+*/
 public class Ejercicio3 {
 	
 	/**
@@ -12,7 +20,7 @@ public class Ejercicio3 {
     public static void main(String[] args) {
     	// Creamos una lista 
         SimpleLinkedList l = new SimpleLinkedList();
-        // Creamos y añadimos varios nodos
+        // Creamos y aï¿½adimos varios nodos
         Node n1 = new Node(300, (Node)null);
         l.add(n1);
         Node n2 = new Node(8, (Node)null);

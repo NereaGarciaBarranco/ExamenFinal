@@ -6,13 +6,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+/**
+* Esta clase ejecuta un programa que se encarga de extraer los datos
+* que queremos de un fichero que contiene datos de divorcios.
+* 
+* @Author Nerea Garcia Barranco
+*/
+
 public class Ejercicio2 {
 	
+	// Creacion de los elementos estaticos necesarios para la clase
 	static ArrayList<Ciudad> ciudades = new ArrayList<Ciudad>();
 	
 	/**
 	 * Pre: ---
-	 * Post: 
+	 * Post: Este metodo main llama a un metodo que se encarga de mostrar
+	 * por pantalla, obteniendo los datos desde un fichero .csv, el total
+	 * de divorcios con separacion previa del año 2019 y el total de 
+	 * divorcios sin seperacion previa del año 2018. Ademas, se encarga
+	 * de mostrar la ciudad con mayor numero de divorcios. Para ello se 
+	 * apoya en objetos de tipo Ciudad.
 	 */
 	public static void main(String[] args) {
 		informacionDivorcios();
@@ -28,8 +41,12 @@ public class Ejercicio2 {
 	
 	/**
 	 * Pre: ---
-	 * Post: Este metodo recorre un fichero y añade al array list de ciudades
-	 * las diferentes ciudades. 
+	 * Post: Este metodo recorre un fichero obteniendo los datos requeridos
+	 * mediante el uso de contadores y, ademas, almacena todas las ciudades
+	 * que aparecen en el fichero a un ArrayList de objetos de tipo ciudad
+	 * donde se almacena el nombre de cada ciudad y el total de divorcios
+	 * que ha tenido esa ciudad entre los años 2013 y 2019 que son los que
+	 * abarca el fichero.
 	 */
 	public static void informacionDivorcios() {	
 		String ruta = "C:\\Users\\Nerea\\Desktop\\divorcios.csv";
@@ -70,6 +87,10 @@ public class Ejercicio2 {
 						// Si no esta vacio lo parsemos
 						numeroDivorcios = Integer.parseInt(datos[3]);						
 					}
+					/* 
+					 * Comprobamos si son justo los datos que queremos almacenar
+					 * y actualizamos los contadores.
+					 */
 					if (anyo == 2019 && separacion == true) {
 						contadorConSeparacion2019 += numeroDivorcios;
 					} else if (anyo == 2018 && separacion == false) {

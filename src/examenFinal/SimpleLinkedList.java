@@ -1,11 +1,11 @@
 package examenFinal;
 
-/*
- * Esta clase sirve para formar objetos de tipo SimplLinkedList que crean
- * una estructura de objetos de tipo Node que se van apuntando entre si.
- * Se guarda cual es el primero para poder acceder siempre a el y 
- * realizar los desplazamientos necesarios. Tambien se guarda el tamano
- * de la lista para saber cuantos Nodes hay. 
+/**
+ * Esta clase sirve para formar objetos de tipo SimplLinkedList 
+ * que crean una estructura de objetos de tipo Node que se van 
+ * apuntando entre si. Se guarda cual es el primero para poder 
+ * acceder siempre a el y realizar los desplazamientos necesarios. 
+ * Tambien se guarda el tamano de la lista para saber cuantos hay.. 
  */
 
 public class SimpleLinkedList {
@@ -72,53 +72,30 @@ public class SimpleLinkedList {
     
     /**
      * Pre: ---
-     * Post: Este metodo anade un objeto de tipo Node en la posicion
-     * que se pasa por parametro. 
-     */
-    public boolean add(int position, Node node) {
-        try {
-            if (position == 0) {
-                node.setNext(this.first);
-                this.first = node;
-            } else {
-                if (position == this.size) {
-                    return this.add(node);
-                }
-                Node p = this.first;
-                for(int i = 1; i < position; ++i) {
-                    p = p.getNext();
-                }
-                node.setNext(p.getNext());
-                p.setNext(node);
-            }
-            size++; return true;
-        } catch (Exception var5) {
-            System.out.println(var5.toString());
-            return false;
-        }
-    }
-    
-    /**
-     * Pre: ---
      * Post: Este metodo borra el Nodo de una lista Simple Enlazada
      * que se encuentre en esa posicion.
      */
     public boolean delete(int position) {
         try {
+        	// Si se quiere borrar el primer nodo
             if (position == 0) {
-                this.first = this.first.getNext();
+            	// Desapuntamos el primer nodo y se piede
+                first = first.getNext();
             } else {
+            	// Creamos un puntero
                 Node p;
-                int i;
-                if (position == this.size) {
-                    p = this.first;
-                    for(i = 1; i < this.size - 1; ++i) {
+                // Si es el ultimo nodo el que queremos borrar
+                if (position == size) {
+                    p = first;
+                    for(int i = 1; i < this.size - 1; i++) {
                         p = p.getNext();
                     }
                     p.setNext((Node)null);
-                } else {
-                    p = this.first;
-                    for(i = 0; i < position - 1; ++i) {
+                } 
+                // Si el nodo esta en medio
+                else {
+                    p = first;
+                    for(int i = 0; i < position - 1; i++) {
                         p = p.getNext();
                     }
                     p.setNext(p.getNext().getNext());
@@ -139,11 +116,15 @@ public class SimpleLinkedList {
      */
     public Node get(int position) {
         try {
+        	// Si la posicion es correcta
             if (position >= 0 && position < this.size) {
+            	// Creamos un puntero
                 Node p = this.first;
+                // Avanzamos hasta la posicion que queremos
                 for(int i = 1; i <= position; ++i) {
                     p = p.getNext();
                 }
+                // Devolvemos ese Node
                 return p;
             }
         } catch (Exception var4) {
@@ -178,7 +159,8 @@ public class SimpleLinkedList {
         // Recorremos los nodos de la lista
         for(int i = 0; i < this.size; ++i) {
         	// Si el contenido del siguiente nodo es mayor que el actual
-            if (nodoActual.getNext() != null && nodoActual.getNext().getContent() > nodoMayor.getContent()) {
+            if (nodoActual.getNext() != null && nodoActual.getNext().getContent() 
+            		> nodoMayor.getContent()) {
             	// Decimos que es el nuevo nodo mayor
                 nodoMayor = nodoActual.getNext();
                 // Seteamos cual es su posicion nueva
@@ -190,6 +172,7 @@ public class SimpleLinkedList {
         // Una vez que hemos encontrado el nodo mayor lo borramos
         this.delete(posicionMayor);
         // Informamos de ello por consola
-        System.out.println("El mayor era " + nodoMayor.getContent() + " y ya ha sido borrado.");
+        System.out.println("El mayor era " + nodoMayor.getContent() 
+        						+ " y ya ha sido borrado.");
     }
 }

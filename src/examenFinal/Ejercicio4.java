@@ -2,6 +2,14 @@ package examenFinal;
 
 import java.util.Scanner;
 
+/**
+* Esta clase pide un numero al Usuario y se encarga de mostrar
+* por pantalla la tabla de multiplicar de dicho numero hasta 
+* llegar a 100 pero solo de los numeros pares.
+* 
+* @Author Nerea Garcia Barranco
+*/
+
 public class Ejercicio4 {
 	
 	/**
