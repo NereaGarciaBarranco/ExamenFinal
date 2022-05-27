@@ -1,29 +1,30 @@
 package examenFinal;
 
-import java.util.ArrayList;
-
 public class Ciudad {
 	// Atributos de la clase
 	private String nombre;
-	private ArrayList<DatosPorAnyo> datos = new ArrayList<DatosPorAnyo>();
+	private int contadorDivorciosTotales;
 	
-	/**
-	 * @param nombre
-	 * @param datos
-	 */
-	public Ciudad(String nombre, ArrayList<DatosPorAnyo> datos) {
-		super();
-		this.nombre = nombre;
-		this.datos = datos;
-	}
+	
 
 	/**
 	 * @param nombre
 	 */
 	public Ciudad(String nombre) {
+		super();
 		this.nombre = nombre;
 	}
-	// Metodos get y set
+
+	/**
+	 * @param nombre
+	 * @param contadorDivorciosTotales
+	 */
+	public Ciudad(String nombre, int contadorDivorciosTotales) {
+		super();
+		this.nombre = nombre;
+		this.contadorDivorciosTotales = contadorDivorciosTotales;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -32,12 +33,18 @@ public class Ciudad {
 		this.nombre = nombre;
 	}
 	
-	public ArrayList<DatosPorAnyo> getDatos() {
-		return datos;
+	public int getContadorDivorciosTotales() {
+		return contadorDivorciosTotales;
 	}
 	
-	public void setDatos(ArrayList<DatosPorAnyo> datos) {
-		this.datos = datos;
+	public void setContadorDivorciosTotales(int contadorDivorciosTotales) {
+		this.contadorDivorciosTotales = contadorDivorciosTotales;
 	}
 	
+	
+	@Override
+	public String toString() {
+		return "Ciudad [nombre=" + nombre + ", contadorDivorciosTotales=" + contadorDivorciosTotales + "]";
+	}
+
 }

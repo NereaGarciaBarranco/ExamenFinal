@@ -30,48 +30,50 @@ public class Ejercicio2 {
 			Scanner f = new Scanner(fichero);
 			// Para evitar la primera linea del csv
 			int contador = 0;
+			// Creamos los contadores necesarios
+			int contadorConSeparacion2019 = 0;
+			int contadorSinSeparacion2018 = 0;
 			// Mientras el .csv siga teniendo lineas
 			while(f.hasNextLine()) {
+				System.out.println("Vamos en la linea " + (contador + 1));
 				String linea = f.nextLine();
+				System.out.println(linea);
 				// Asi evitamos la cabecera del archivo
 				if (contador != 0) {
+					// Limpiamos la linea de puntos
+					linea = linea.replace("...", "");
+					linea = linea.replace(".","");
 					// Separamos las lineas por el separador del .csv
 					String[] datos = linea.split(";");
 					// A la ciudad le quitamos el identificador
-					String nombre = datos[0].substring(3, datos[0].length());
-					// Para saber si ese registro es con y sin separacion creamos un boolean
-					boolean separacion;
-					if(datos[1].equals("Si")) {
-						separacion = true;
-					} else {
-						separacion = false;
-					}
-					// Pasamos a String los siguientes datos para poder trabajar con ellos
-					int anyo = Integer.parseInt(datos[2]);
-					int numeroDivorcios = Integer.parseInt(datos[3]);
-					/*
-					 * Comprobamos si la ciudad de la linea ya esta guardada en el
-					 * ArrayList de ciudades para meterla o no. La primera vez
-					 * siempre se añade porque es imposible que este.
-					 */
-					if (ciudades.size() == 0) {
-						Ciudad nueva = new Ciudad (nombre);
-						ciudades.add(nueva);
-					} 
-					// El resto de veces comprobamos si esta y si no, lo añadimos
-					else { 					
-						if(!comprobarCiudad(nombre)) {
-							Ciudad nueva = new Ciudad (nombre);;
-							ciudades.add(nueva);
-						} // Si ya estaba 
-						else {
-							
+					if(datos.length == 3) {
+						String nombre = datos[0];
+						System.out.println(nombre);
+						// Para saber si ese registro es con y sin separacion creamos un boolean
+						boolean separacion;
+						if(datos[1].equals("Si")) {
+							separacion = true;
+						} else {
+							separacion = false;
 						}
+						// Pasamos a String los siguientes datos para poder trabajar con ellos
+						int anyo = Integer.parseInt(datos[2]);
+						System.out.println(anyo);
+						int numeroDivorcios = Integer.parseInt(datos[3]);
+						if (anyo == 2019 && separacion == true) {
+							contadorConSeparacion2019++;
+						} else if (anyo == 2018 && separacion == false) {
+							contadorSinSeparacion2018++;
+						}			
+					} else {
+						System.out.println("Ignoramos linea");
 					}
 				}
 				contador++;
 			}
 			f.close();
+			System.out.println(contadorConSeparacion2019);
+			System.out.println(contadorSinSeparacion2018);
 		} catch (FileNotFoundException e) {
 			System.out.println("No se ha podido acceder al fichero.");
 			e.printStackTrace();
@@ -95,6 +97,14 @@ public class Ejercicio2 {
 		return aparece;
 	}
 	
+	/**
+	 * Pre: ---
+	 * Post: Este metodo devuelve la posicion de una ciudad en un 
+	 * ArrayList de objetos de tipo ciudad, encontrandolo por su 
+	 * nombre pasado por parametro.
+	 * @param nombre
+	 * @return
+	 */
 	public static int devolverPosicionCiudad(String nombre) {
 		for (int i = 0; i < ciudades.size(); i++) {
 			if(ciudades.get(i).getNombre().equals(nombre)) {
@@ -102,10 +112,6 @@ public class Ejercicio2 {
 			}
 		}
 		return -1;
-	}
-	
-	public static void agregarDatosPorAnyo(String nombre, boolean separacion, int anyo, int numeroDivorcios) {
-
 	}
 	
 }
